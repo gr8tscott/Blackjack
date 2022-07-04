@@ -93,11 +93,76 @@ const playGame = () => {
             //bust or win
             console.log('BUST')
           }
-          return playerSumCards
+          //return playerSumCards
           //   checkWinner()
         }
       }
     })
+    const dealerCards = () => {
+      console.log('help meeeee')
+      const keys = Object.keys(cardDeck)
+      let prop = keys[Math.floor(Math.random() * keys.length)]
+      let card = document.createElement('div')
+      card.innerText = prop
+      console.log(cardDeck[prop])
+      dealer.appendChild(card)
+
+      let trackCards = []
+      trackCards.push(cardDeck[prop])
+
+      let secondCard = document.createElement('div')
+      secondCard.classList.add('face-down')
+      secondCard.innerText = '?'
+      dealer.appendChild(secondCard)
+
+      //Stay Button Clicked
+      stayButton.addEventListener('click', () => {
+        console.log('2stay')
+        dealer.removeChild(secondCard)
+
+        const keys = Object.keys(cardDeck)
+        let prop = keys[Math.floor(Math.random() * keys.length)]
+        let card = document.createElement('div')
+        card.innerText = prop
+        console.log(cardDeck[prop])
+        dealer.appendChild(card)
+
+        //   let trackCards = []
+        for (const [key, value] of Object.entries(cardDeck)) {
+          if (key === prop) {
+            // console.log(value)
+            trackCards.push(value)
+
+            console.log(trackCards)
+            const reducer = (accumulator, current) => accumulator + current
+            const dealerSumCards = trackCards.reduce(reducer)
+            console.log('dealer card sum:' + dealerSumCards)
+
+            if (dealerSumCards > 21) {
+              //bust or win
+              console.log('BUST')
+            }
+            return dealerSumCards
+          }
+        }
+        dealerCards()
+        const checkWinner = () => {
+          // let playerSumCards = playerCards(playerSumCards)
+          // let dealerSumCards = dealerCards(dealerSumCards)
+          if (playerSumCards > 21) {
+            //bust or win
+            console.log('Player BUST')
+          } else if (playerSumCards > dealerSumCards) {
+            console.log('yay player wins')
+          } else if (playerSumCards < dealerSumCards) {
+            console.log('Dealer won, you lost your money')
+          } else if (playerSumCards === dealerSumCards) {
+            console.log('its a tie')
+          }
+        }
+        checkWinner()
+      })
+    }
 
     //   let sum = cardDeck[prop] + (cardDeck[prop] - 1)
     //   console.log(sum)
@@ -116,56 +181,56 @@ const playGame = () => {
     // })
   }
 
-  const dealerCards = () => {
-    const keys = Object.keys(cardDeck)
-    let prop = keys[Math.floor(Math.random() * keys.length)]
-    let card = document.createElement('div')
-    card.innerText = prop
-    console.log(cardDeck[prop])
-    dealer.appendChild(card)
+  //   const dealerCards = () => {
+  //     const keys = Object.keys(cardDeck)
+  //     let prop = keys[Math.floor(Math.random() * keys.length)]
+  //     let card = document.createElement('div')
+  //     card.innerText = prop
+  //     console.log(cardDeck[prop])
+  //     dealer.appendChild(card)
 
-    let trackCards = []
-    trackCards.push(cardDeck[prop])
+  //     let trackCards = []
+  //     trackCards.push(cardDeck[prop])
 
-    let secondCard = document.createElement('div')
-    secondCard.classList.add('face-down')
-    secondCard.innerText = '?'
-    dealer.appendChild(secondCard)
+  //     let secondCard = document.createElement('div')
+  //     secondCard.classList.add('face-down')
+  //     secondCard.innerText = '?'
+  //     dealer.appendChild(secondCard)
 
-    //Stay Button Clicked
-    stayButton.addEventListener('click', () => {
-      console.log('2stay')
-      dealer.removeChild(secondCard)
+  //     //Stay Button Clicked
+  //     stayButton.addEventListener('click', () => {
+  //       console.log('2stay')
+  //       dealer.removeChild(secondCard)
 
-      const keys = Object.keys(cardDeck)
-      let prop = keys[Math.floor(Math.random() * keys.length)]
-      let card = document.createElement('div')
-      card.innerText = prop
-      console.log(cardDeck[prop])
-      dealer.appendChild(card)
+  //       const keys = Object.keys(cardDeck)
+  //       let prop = keys[Math.floor(Math.random() * keys.length)]
+  //       let card = document.createElement('div')
+  //       card.innerText = prop
+  //       console.log(cardDeck[prop])
+  //       dealer.appendChild(card)
 
-      //   let trackCards = []
-      for (const [key, value] of Object.entries(cardDeck)) {
-        if (key === prop) {
-          // console.log(value)
-          trackCards.push(value)
+  //       //   let trackCards = []
+  //       for (const [key, value] of Object.entries(cardDeck)) {
+  //         if (key === prop) {
+  //           // console.log(value)
+  //           trackCards.push(value)
 
-          console.log(trackCards)
-          const reducer = (accumulator, current) => accumulator + current
-          const dealerSumCards = trackCards.reduce(reducer)
-          console.log('dealer card sum:' + dealerSumCards)
+  //           console.log(trackCards)
+  //           const reducer = (accumulator, current) => accumulator + current
+  //           const dealerSumCards = trackCards.reduce(reducer)
+  //           console.log('dealer card sum:' + dealerSumCards)
 
-          if (dealerSumCards > 21) {
-            //bust or win
-            console.log('BUST')
-          }
-          return dealerSumCards
-        }
-      }
+  //           if (dealerSumCards > 21) {
+  //             //bust or win
+  //             console.log('BUST')
+  //           }
+  //           return dealerSumCards
+  //         }
+  //       }
 
-      checkWinner()
-    })
-  }
+  //       checkWinner()
+  //     })
+  //   }
 
   //   const checkWinner = () => {
   //     // let playerSumCards = playerCards(playerSumCards)
@@ -182,7 +247,7 @@ const playGame = () => {
   //     }
   //   }
   playerCards()
-  dealerCards()
+  //   dealerCards()
   //checkWinner()
   //   const test = () => {
   //     // console.log(playerCards(playerSumCards))

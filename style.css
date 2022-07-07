@@ -379,6 +379,10 @@ border-left: 5px solid black; */
 .card.back-red {
   background-image: url("./images/backs/red.svg"); }
 
+  .card.newcardback {
+    background-image: url("carddeckback.jpeg"); }
+  
+
 /* Re-orients the cards for different directions. While
    they are symmetric, it's still important to orient
    them correctly in case text or other symbols are

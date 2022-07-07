@@ -63,6 +63,8 @@ const levelWinner = document.querySelector('.level-winner')
 let playerSumCards = 0
 let dealerSumCards = 0
 
+const delayInMilliseconds = 5000
+
 //switch between game start page and playing page
 function show(shown, hidden) {
   document.getElementById(shown).style.display = 'block'
@@ -176,42 +178,18 @@ const playGame = () => {
     let secondCard = document.createElement('div')
     secondCard.classList.add('face-down')
     secondCard.classList.add('card')
-    secondCard.classList.add('back-blue')
+    secondCard.classList.add('newcardback')
     secondCard.classList.add('large')
     secondCard.innerText = '?'
     dealer.appendChild(secondCard)
 
     //Stay Button Clicked
-    stayButton.addEventListener('click', () => {
-      hitButton.disabled = true
+    setTimeout(
+      stayButton.addEventListener('click', () => {
+        hitButton.disabled = true
 
-      dealer.removeChild(secondCard)
+        dealer.removeChild(secondCard)
 
-      const keys = Object.keys(cardDeck)
-      let prop = keys[Math.floor(Math.random() * keys.length)]
-      let card = document.createElement('div')
-      card.classList.add('card')
-      card.classList.add(prop)
-      card.classList.add('large')
-      card.innerText = prop
-      console.log(cardDeck[prop])
-      dealer.appendChild(card)
-      dealerAceValue()
-
-      //   let trackCards = []
-      for (const [key, value] of Object.entries(cardDeck)) {
-        if (key === prop) {
-          trackCards.push(value)
-
-          console.log(trackCards)
-          const reducer = (accumulator, current) => accumulator + current
-          dealerSumCards = trackCards.reduce(reducer)
-          console.log('dealer card sum:' + dealerSumCards)
-
-          dealerAceValue()
-        }
-      }
-      while (dealerSumCards <= 16) {
         const keys = Object.keys(cardDeck)
         let prop = keys[Math.floor(Math.random() * keys.length)]
         let card = document.createElement('div')
@@ -221,7 +199,9 @@ const playGame = () => {
         card.innerText = prop
         console.log(cardDeck[prop])
         dealer.appendChild(card)
-        ///
+        dealerAceValue()
+
+        //   let trackCards = []
         for (const [key, value] of Object.entries(cardDeck)) {
           if (key === prop) {
             trackCards.push(value)
@@ -230,17 +210,42 @@ const playGame = () => {
             const reducer = (accumulator, current) => accumulator + current
             dealerSumCards = trackCards.reduce(reducer)
             console.log('dealer card sum:' + dealerSumCards)
+
+            dealerAceValue()
           }
         }
-      }
-      if (dealerSumCards > 21) {
-        console.log('Dealer BUST')
-        levelWinner.innerHTML = `Player BUST, dealer wins!`
-        levelWinner.style.opacity = 0.8
-      }
+        while (dealerSumCards <= 16) {
+          const keys = Object.keys(cardDeck)
+          let prop = keys[Math.floor(Math.random() * keys.length)]
+          let card = document.createElement('div')
+          card.classList.add('card')
+          card.classList.add(prop)
+          card.classList.add('large')
+          card.innerText = prop
+          console.log(cardDeck[prop])
+          dealer.appendChild(card)
+          ///
+          for (const [key, value] of Object.entries(cardDeck)) {
+            if (key === prop) {
+              trackCards.push(value)
 
-      checkWinner()
-    })
+              console.log(trackCards)
+              const reducer = (accumulator, current) => accumulator + current
+              dealerSumCards = trackCards.reduce(reducer)
+              console.log('dealer card sum:' + dealerSumCards)
+            }
+          }
+        }
+        if (dealerSumCards > 21) {
+          console.log('Dealer BUST')
+          levelWinner.innerHTML = `Player BUST, dealer wins!`
+          levelWinner.style.opacity = 0.8
+        }
+
+        checkWinner()
+      }),
+      delayInMilliseconds
+    )
   }
 
   //Dealer is 16 or 17 count

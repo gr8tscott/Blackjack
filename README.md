@@ -28,6 +28,14 @@
 
 ##### You can check out the project [here](https://matts-blackjack.surge.sh) on surge.
 
+---
+
+### **_Screenshots_**
+
+![Screenshot](screenshotofgame.png)
+
+---
+
 ### **_Future Updates_**
 
 - [] Delay card display time

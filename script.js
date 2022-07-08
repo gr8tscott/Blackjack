@@ -223,7 +223,6 @@ const playGame = () => {
 
       dealerAceValue()
 
-      //   let trackCards = []
       for (const [key, value] of Object.entries(cardDeck)) {
         if (key === prop) {
           trackCards.push(value)
@@ -270,10 +269,6 @@ const playGame = () => {
     })
   }
 
-  //Dealer is 16 or 17 count
-  //   if (dealerSumCards <= 16) {
-  //     //dealerpulls another card, otherwise count is over 17 and dealer must stay
-  //   }
   const checkWinner = () => {
     console.log(playerSumCards)
     console.log(dealerSumCards)
@@ -307,5 +302,3 @@ const playGame = () => {
 }
 
 playGame()
-
-//who wins?

@@ -63,7 +63,7 @@ const levelWinner = document.querySelector('.level-winner')
 let playerSumCards = 0
 let dealerSumCards = 0
 const playerDisplayCount = document.querySelector('.player-sum')
-const dealerDisplayCount = document.querySelector('dealer-sum')
+const dealerDisplayCount = document.querySelector('.dealer-sum')
 
 const delayInMilliseconds = 5000
 
@@ -188,6 +188,7 @@ const playGame = () => {
     card.innerText = prop
     console.log(cardDeck[prop])
     dealer.appendChild(card)
+    dealerDisplayCount.innerText = 'Dealer card sum: ' + cardDeck[prop]
 
     let trackCards = []
     trackCards.push(cardDeck[prop])
@@ -198,6 +199,7 @@ const playGame = () => {
     secondCard.classList.add('newcardback')
     secondCard.classList.add('large')
     secondCard.innerText = '?'
+
     dealer.appendChild(secondCard)
 
     //Stay Button Clicked
@@ -206,7 +208,6 @@ const playGame = () => {
     }
     stayButton.addEventListener('click', () => {
       hitButton.disabled = true
-      stayButton.disable = true
 
       dealer.removeChild(secondCard)
 
@@ -219,6 +220,7 @@ const playGame = () => {
       card.innerText = prop
       console.log(cardDeck[prop])
       dealer.appendChild(card)
+
       dealerAceValue()
 
       //   let trackCards = []
@@ -230,6 +232,7 @@ const playGame = () => {
           const reducer = (accumulator, current) => accumulator + current
           dealerSumCards = trackCards.reduce(reducer)
           console.log('dealer card sum:' + dealerSumCards)
+          dealerDisplayCount.innerText = 'Dealer card sum: ' + dealerSumCards
 
           dealerAceValue()
         }
@@ -244,6 +247,7 @@ const playGame = () => {
         card.innerText = prop
         console.log(cardDeck[prop])
         dealer.appendChild(card)
+
         ///
         for (const [key, value] of Object.entries(cardDeck)) {
           if (key === prop) {
@@ -253,6 +257,7 @@ const playGame = () => {
             const reducer = (accumulator, current) => accumulator + current
             dealerSumCards = trackCards.reduce(reducer)
             console.log('dealer card sum:' + dealerSumCards)
+            dealerDisplayCount.innerText = 'Dealer card sum: ' + dealerSumCards
           }
         }
       }

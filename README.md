@@ -12,11 +12,13 @@
 
 ### **_Description_**
 
-#### Blackjack, the gambling game everyone loves to lose their money to
+#### Blackjack, the gambling game everyone loves to lose their money to.
+
+#### This was a project I made in less than a week after just learning about HTML, JavaScript, and CSS.
 
 ---
 
-### **_Getting Started_**
+### **_Overview_**
 
 ##### The player enters the game opposite the dealer. A standard 52-card deck is used. The player is dealt 2 cards and given the option to hit (be dealt another card) or stay and the dealer takes their turn.
 
@@ -29,8 +31,9 @@
 ### **_Future Updates_**
 
 - [] Delay card display time
-- [] Set-up betting
-- []
+- [] Set-up betting/gambling
+- [] Create visual card grid to look more like a card board
+- [] Set-up animations for card draw/flip
 
 ### **_Credits_**
 

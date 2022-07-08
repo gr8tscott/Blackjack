@@ -266,8 +266,7 @@ const playGame = () => {
         levelWinner.innerHTML = `Player BUST, dealer wins!`
         levelWinner.style.opacity = 0.8
       }
-
-      checkWinner()
+      setTimeout(checkWinner(), 5000)
     })
   }
 
@@ -278,6 +277,7 @@ const playGame = () => {
   const checkWinner = () => {
     console.log(playerSumCards)
     console.log(dealerSumCards)
+
     if (playerSumCards > 21) {
       //bust or win
       console.log('Player BUST, dealer wins')

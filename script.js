@@ -247,7 +247,6 @@ const playGame = () => {
         console.log(cardDeck[prop])
         dealer.appendChild(card)
 
-        ///
         for (const [key, value] of Object.entries(cardDeck)) {
           if (key === prop) {
             trackCards.push(value)

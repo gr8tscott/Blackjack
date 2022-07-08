@@ -62,6 +62,8 @@ const levelWinner = document.querySelector('.level-winner')
 
 let playerSumCards = 0
 let dealerSumCards = 0
+const playerDisplayCount = document.querySelector('.player-sum')
+const dealerDisplayCount = document.querySelector('dealer-sum')
 
 const delayInMilliseconds = 5000
 
@@ -137,6 +139,7 @@ const playGame = () => {
     const reducer = (accumulator, current) => accumulator + current
     playerSumCards = trackCards.reduce(reducer)
     console.log('Player card sum:' + playerSumCards)
+    playerDisplayCount.innerText = 'Player card sum: ' + playerSumCards
 
     hitButton.addEventListener('click', () => {
       const keys = Object.keys(cardDeck)
@@ -158,6 +161,7 @@ const playGame = () => {
           const reducer = (accumulator, current) => accumulator + current
           playerSumCards = trackCards.reduce(reducer)
           console.log('Player card sum:' + playerSumCards)
+          playerDisplayCount.innerText = 'Player card sum: ' + playerSumCards
           aceCardValue()
 
           if (playerSumCards > 21) {
@@ -166,6 +170,7 @@ const playGame = () => {
             levelWinner.innerHTML = `Player BUST, dealer wins!`
             levelWinner.style.opacity = 0.8
             hitButton.disabled = true
+            stayButton.disabled = true
           }
           return playerSumCards
         }
@@ -196,9 +201,12 @@ const playGame = () => {
     dealer.appendChild(secondCard)
 
     //Stay Button Clicked
-
-    stayButton.addEventListener('click', async () => {
+    if (playerSumCards > 21) {
+      stayButton.disabled = true
+    }
+    stayButton.addEventListener('click', () => {
       hitButton.disabled = true
+      stayButton.disable = true
 
       dealer.removeChild(secondCard)
 

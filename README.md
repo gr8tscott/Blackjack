@@ -22,7 +22,7 @@
 
 ##### The dealer starts with one card revealed and one card face-down. After the player stays, the dealer reveals the face down card. If the sum of the two cards is less than or equal to 16, the dealer must draw another card. If the sum of the cards is 17 or greater, the dealer must stay.
 
-##### Ace cards can be counted as a value of 11 or 1 depending on which is most advantageous. Whoever's cards add up closer to 21, without exceeding 21 wins. After a winner is declared, the deck reshuffles and the player can decide again whether to hit or stay.
+##### Ace cards can be counted as a value of 11 or 1 depending on which is most advantageous. Whoever's cards add up closer to 21, without exceeding 21, wins. After a winner is declared, the deck reshuffles and the player can decide again whether to hit or stay.
 
 ##### You can check out the project [here](https://matts-blackjack.surge.sh) on surge.
 
